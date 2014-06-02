@@ -1,0 +1,16 @@
+#simple-color-picker > div {
+  padding-top: 1em;
+  padding-bottom: 0.5em;
+  padding-right: 0.5em;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
+}
+
+#simple-color-picker .color-item {
+  width: 3em;
+  height: 3em;
+  margin-right: 0.5em;
+  margin-bottom: 0.5em;
+  float: left;
+}

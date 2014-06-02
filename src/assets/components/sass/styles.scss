@@ -1,0 +1,315 @@
+@import "compass/reset";
+@import "compass/css3";
+@import "icons/*.png";
+@import "mixins";
+
+$bg_color: lighten(#222, 5%);
+$border_color: lighten($bg_color, 10%);
+$header_title_height: 29px;
+$header_title_margin: 6px;
+
+body {
+	font-family: sans-serif;
+	line-height: 1.3;
+}
+
+h3 {
+	display: block;
+	font-size: 1.15em;
+	margin: 0.5em 0;
+	font-weight: bold;
+}
+
+p {
+	margin: 1em 0;
+}
+
+// fix for ui-popup-screen overflow page and cauzing scroll
+.ui-mobile [data-role=page],
+.ui-mobile [data-role=dialog],
+.ui-page {
+	bottom: 0;
+}
+
+.ui-header {
+	background-color: $bg_color;
+	@include text-shadow;
+	border-bottom: 1px solid rgb(187, 187, 187);
+
+	a.ui-btn-inline {
+		border: 0;
+		&:active {
+			border: 0;
+		}
+	}
+
+	h1.ui-title {
+		@include icons-sprite("header");
+		margin: $header_title_margin 0 $header_title_margin 42px;
+		height: $header_title_height;
+		line-height: $header_title_height;
+		padding: 0 0 0 38px;
+		text-align: left;
+		color: #fff;
+		font-size: 1.1em;
+	}
+
+	.tab {
+		position: absolute;
+		top: $header_title_margin + 3px;
+	}
+
+	.menu-tab {
+		@extend .tab;
+		@include icons-sprite("menu-tab");
+		right: 12px;
+		width: 6px;
+		height: 20px;
+	}
+
+	.ui-icon-gear {
+		top: 9px;
+		padding-top: 8px;
+		padding-bottom: 14px;
+	}
+
+}
+
+#navPanel {
+	background-color: $bg_color;
+
+	top: $header_title_height + $header_title_margin * 2;
+
+	.ui-panel-inner {
+		padding: 0;
+	}
+
+	li {
+		padding: 10px 15px;
+		display: block;
+		border-bottom: 1px solid $border_color;
+	}
+
+	a {
+		color: #fff;
+		text-decoration: none;
+		font-weight: normal;
+		font-size: 1.1em;
+	}
+}
+
+.login-page {
+
+	padding-top: 48px;
+	text-align: center;
+
+	.logo {
+		margin: 0 auto 45px;
+		max-width: 100%;
+	}
+}
+
+.dashboard {
+
+	.events {
+		margin-top: 1em;
+	}
+}
+
+
+.course-name {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+
+.lessons {
+	$color_bar_margin_left: 25px;
+	margin-top: 1em;
+
+	.list-item-name {
+		margin-left: $color_bar_margin_left;
+		display: inline;
+	}
+
+	.lesson-description {
+		margin-left: $color_bar_margin_left;
+		font-size: 0.8em;
+	}
+
+	.course-color {
+		position: absolute;
+		width: 1em;
+	}
+}
+
+.lessons-list {
+	@extend .lessons;
+}
+
+.events-list {
+	@extend .lessons;
+	display: none;
+	.lesson-description {
+		@extend .course-name;
+	}
+}
+
+.daily-schedule {
+
+	.lessons-list {
+		margin: 0;
+	}
+
+	ul.ui-listview {
+		margin-top: 1em;
+	}
+}
+
+.monthly-schedule {
+
+	.ui-datepicker {
+		th {
+			text-align: center;
+		}
+
+		td {
+			min-width: 0;
+			border-top: 1px solid #ddd !important;
+			border-bottom: 1px solid #ddd !important;
+
+			.event-icon {
+				@include icons-sprite("event");
+				width: 12px;
+				height: 10px;
+				position: absolute;
+				top: 0;
+				right: 0
+			}
+
+			.lessons-container {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				
+				.lesson-icon {
+					width: 5px;
+					height: 5px;
+					background-color: #5674b9;
+					border: 1px solid #ccc;
+					float: left;
+				}
+			}
+		}
+	}
+
+	div.hasDatepicker {
+		max-width: none;
+		margin-top: 0;
+	}
+
+	.ui-datepicker-calendar td {
+		a {
+			padding: .5em;
+		}
+
+		span {
+			padding: .5em;
+		}
+	}
+
+	.ui-input-text,
+	.events-list,
+	.lessons-list {
+		display: none;
+	}
+}
+
+.events-page {
+	.lessons-list {
+		display: none;
+	}
+
+	.events-list {
+		display: block;
+	}
+}
+
+.search-page {
+	text-align: center;
+
+	label {
+		font-weight: bold;
+		padding: 0.5em 0;
+	}
+
+	.course-date {
+		margin-top: 1em;
+
+		label {
+			span {
+				margin: 0;
+			}
+		}
+
+		&~.ui-btn {
+			@extend .course-date;
+		}
+	}
+}
+
+.search-results {
+
+	.course-details {
+		font-size: 0.75em;
+		font-weight: normal;
+
+		span {
+			font-weight: bold
+		}
+	}
+
+	form {
+		text-align: center;
+	}
+
+	.ui-input-btn {
+		margin-top: 2em;
+	}
+
+}
+.customize-courses {
+	text-align: center;
+}
+
+.color-box {
+	float: left;
+	background-color: red;
+	width: 1.3em;
+	height: 1.3em;
+	position: relative;
+	margin-right: 0.5em;
+
+	a {
+		width: 100%;
+		height: 100%;
+		display: block;
+	}
+
+	&::after {
+		display: block;
+		content: "";
+		width: 10px;
+		height: 9px;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		@include icons-sprite("color-picker");
+	} 
+}
+
+#footer-navbar {
+	border-bottom: 0;
+	text-transform: uppercase;
+}
